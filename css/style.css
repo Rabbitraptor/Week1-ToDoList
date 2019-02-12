@@ -1,0 +1,303 @@
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #e1e1e1; }
+
+input[type=checkbox],
+input[type=file] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  outline: none; }
+
+input[type=text] {
+  outline: none; }
+
+.fa-star,
+.fa-pencil-alt,
+.fa-times {
+  cursor: pointer; }
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 76px;
+  background: #4A90E2;
+  padding: 0 10%; }
+  .header .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%; }
+    .header .menu-item {
+      flex: 1 1 auto;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      color: #00408B;
+      font-size: 24px; }
+      .header .menu-item.is-selected {
+        color: #fff; }
+        .header .menu-item.is-selected::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          border-bottom: #00408B solid 5px; }
+      .header .menu-item:hover {
+        color: #fff; }
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 10%; }
+
+.task {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #f2f2f2; }
+  .task + .task {
+    margin-top: 14px; }
+  .task.is-open {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.26); }
+    .task.is-open .task-detail {
+      display: block; }
+    .task.is-open .task-info {
+      display: none; }
+    .task.is-open .task-title {
+      pointer-events: auto; }
+    .task.is-open .fa-pencil-alt {
+      color: #4A90E2; }
+    .task.is-open .fa-star,
+    .task.is-open .task-checkbox {
+      display: none; }
+  .task.is-highlight {
+    order: -1;
+    background-color: #FFF2DC; }
+    .task.is-highlight .task-detail {
+      background-color: inherit; }
+    .task.is-highlight .fa-star {
+      font-weight: 900;
+      color: #F5A623; }
+  .task.is-done {
+    color: #b8b8b8; }
+    .task.is-done .task-col-title {
+      position: relative;
+      color: inherit; }
+      .task.is-done .task-col-title .task-title {
+        color: inherit; }
+        .task.is-done .task-col-title .task-title::-webkit-input-placeholder {
+          color: inherit; }
+        .task.is-done .task-col-title .task-title:-ms-input-placeholder {
+          color: inherit; }
+        .task.is-done .task-col-title .task-title::-ms-input-placeholder {
+          color: inherit; }
+        .task.is-done .task-col-title .task-title::placeholder {
+          color: inherit; }
+      .task.is-done .task-col-title::before {
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 0;
+        right: 40px;
+        height: 1px;
+        background-color: currentColor; }
+    .task.is-done .task-col-title,
+    .task.is-done .task-col-last {
+      pointer-events: none;
+      color: inherit; }
+  .task-row {
+    padding: 16px; }
+    .task-row + .task-row {
+      margin-top: 8px; }
+  .task-col {
+    flex: 0 0 auto;
+    display: flex; }
+  .task-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px 0; }
+    .task-content > .task-col-first {
+      padding-right: 20px;
+      width: 80px;
+      justify-content: flex-end; }
+    .task-content > .task-col-title {
+      flex: 1 1 auto;
+      flex-direction: column;
+      width: 100%;
+      padding-right: 40px; }
+      .task-content > .task-col-title input {
+        pointer-events: none; }
+    .task-content > .task-col-last {
+      padding-right: 40px;
+      justify-content: flex-end; }
+      .task-content > .task-col-last i + i {
+        margin-left: 40px; }
+    .task-content .task-title {
+      flex: 1 1 auto;
+      width: 100%;
+      height: 26px;
+      padding: 1px 0;
+      line-height: 1;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 24px;
+      color: #000;
+      background-color: inherit;
+      border: none; }
+      .task-content .task-title::-webkit-input-placeholder {
+        color: inherit;
+        font-weight: normal; }
+      .task-content .task-title:-ms-input-placeholder {
+        color: inherit;
+        font-weight: normal; }
+      .task-content .task-title::-ms-input-placeholder {
+        color: inherit;
+        font-weight: normal; }
+      .task-content .task-title::placeholder {
+        color: inherit;
+        font-weight: normal; }
+    .task-content .task-info {
+      display: flex;
+      margin-top: 8px;
+      align-items: center; }
+      .task-content .task-info i {
+        font-size: 18px; }
+        .task-content .task-info i + span {
+          margin-left: 6px;
+          line-height: 1; }
+      .task-content .task-info .task-col {
+        margin-right: 8px;
+        align-items: baseline; }
+  .task .task-checkbox {
+    flex: 0 0 auto;
+    line-height: 1; }
+    .task .task-checkbox i {
+      color: #fff; }
+    .task .task-checkbox input:checked + i::before {
+      content: "\f14a";
+      color: #4A90E2; }
+  .task i {
+    font-size: 24px; }
+
+.task-add {
+  order: -999;
+  margin-bottom: 10px; }
+  .task-add .task-content:first-of-type {
+    background-color: #fff;
+    border-radius: inherit; }
+    .task-add .task-content:first-of-type .task-title,
+    .task-add .task-content:first-of-type .task-col-first {
+      color: #c8c8c8; }
+  .task-add .task-content + .task-content {
+    display: none; }
+  .task-add.is-open .task-content:first-of-type {
+    display: none; }
+  .task-add.is-open .task-content + .task-content {
+    display: flex; }
+
+.task-detail {
+  display: none;
+  width: 100%;
+  border-top: 2px solid #c8c8c8;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
+
+.task-form {
+  padding: 20px 0;
+  min-height: 0;
+  font-size: 18px; }
+  .task-form .task-row {
+    padding: 14px 80px; }
+    .task-form .task-row + .task-row {
+      margin-top: 20px; }
+  .task-form-header {
+    display: flex;
+    align-items: center; }
+    .task-form-header span {
+      font-size: 20px;
+      font-weight: bold; }
+    .task-form-header i {
+      font-size: 20px;
+      width: 30px; }
+  .task-form-body {
+    display: flex;
+    padding-top: 6px;
+    padding-left: 30px; }
+  .task-form-date {
+    line-height: 1;
+    height: 30px; }
+    .task-form-date input {
+      height: 100%;
+      padding: 5px; }
+      .task-form-date input[type=date]::-webkit-inner-spin-button {
+        visibility: hidden; }
+      .task-form-date input + input {
+        margin-left: 20px; }
+  .task-form-file {
+    display: flex; }
+    .task-form-file .fa-plus {
+      background-color: #c8c8c8;
+      width: 36px;
+      height: 36px; }
+      .task-form-file .fa-plus::before {
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        line-height: 36px; }
+  .task-form-textarea {
+    width: 100%; }
+    .task-form-textarea textarea {
+      display: block;
+      padding: 6px;
+      width: 100%;
+      min-height: 100px; }
+  .task-form-submit {
+    display: flex;
+    border-radius: inherit; }
+    .task-form-submit .button {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 14px 0;
+      font-size: 24px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      cursor: pointer; }
+      .task-form-submit .button i + span {
+        margin-left: 8px; }
+      .task-form-submit .button-cancel {
+        color: #D0021B;
+        background: #fff;
+        border-bottom-left-radius: inherit; }
+        .task-form-submit .button-cancel:hover {
+          background-color: #fdfdfd; }
+      .task-form-submit .button-save {
+        color: #fff;
+        background: #4A90E2;
+        border-bottom-right-radius: inherit; }
+        .task-form-submit .button-save:hover {
+          background-color: #3982d7; }
